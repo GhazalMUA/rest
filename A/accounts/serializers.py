@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Cardio
-from datetime import datetime
+
 
 
 #third type of validation: you create a seperate function and work on that function. i mean its not a function of a class. its a seperate fnction. its good when you want to use a validator in many places. makesure to pass `value` to this function.
@@ -34,14 +33,3 @@ class UserRegisterSerializer(serializers.Serializer):
         
         
         
-class CardioSerializer(serializers.ModelSerializer):
-    date=serializers.CharField()
-    class Meta:
-        
-        model = Cardio
-        fields = ('sport_name' , 'callory_burning','coach' , 'date')      #if you want to choose one or multiple item just like forms you should assign them in a tople
-    
-    def validate_coach(self,value):
-        if value == 'admin':
-            raise serializers.ValidationError('coach name shouldnt be admin')
-        return value
