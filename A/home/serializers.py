@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Cardio , Question , Answer
+
 class PersonSerializer(serializers.Serializer):
     name=serializers.CharField()
     age=serializers.IntegerField()
@@ -27,6 +28,11 @@ class AnswerSerializer(serializers.ModelSerializer):
         
         
 class QuestionSerializer(serializers.ModelSerializer):
+    answers = serializers.SerializerMethodField()
     class Meta:
         model = Question
         fields = '__all__'
+        
+    def get_answers(self,obj):
+        result = obj.answers.all()
+        return AnswerSerializer(instance=result , many=True).data

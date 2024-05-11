@@ -5,6 +5,7 @@ from .serializers import PersonSerializer , CardioSerializer , QuestionSerialize
 from .models import Cardio , Question , Answer
 from rest_framework.permissions import IsAdminUser , IsAuthenticated
 from rest_framework import status
+from permissions import IsOwnerOrReadOnly
 # Create your views here.
 
 class HomeView(APIView):
@@ -37,7 +38,8 @@ class QuestionListView(APIView):
         return Response(serialized_data , status=status.HTTP_200_OK)
     
     
-class QuestionCreateView(APIView):   
+class QuestionCreateView(APIView): 
+    permission_classes=[IsAuthenticated]  
     def post(self,request , *args, **kwargs):
         print(request.data)
         serialized_data = QuestionSerializer(data=request.data)
@@ -48,8 +50,10 @@ class QuestionCreateView(APIView):
     
     
 class QuestionUpdateView(APIView):    
+    permission_classes=[IsOwnerOrReadOnly]
     def put(self,request,pk):
         question=Question.objects.get(pk=pk)
+        self.check_object_permissions(request,question)
         ser_data=QuestionSerializer(instance=question, data=request.data, partial=True)
         if ser_data.is_valid():
             ser_data.save()
