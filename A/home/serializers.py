@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from .models import Cardio , Question , Answer
 
+
 class PersonSerializer(serializers.Serializer):
     name=serializers.CharField()
     age=serializers.IntegerField()
     email=serializers.EmailField()
-    
-    
-    
+     
+     
 class CardioSerializer(serializers.ModelSerializer):
     date=serializers.CharField()
     class Meta:
@@ -35,4 +35,6 @@ class QuestionSerializer(serializers.ModelSerializer):
         
     def get_answers(self,obj):
         result = obj.answers.all()
-        return AnswerSerializer(instance=result , many=True).data
+        return AnswerSerializer(instance=result,many=True).data
+    
+    

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from django.contrib.auth.models import User
 
 
 #third type of validation: you create a seperate function and work on that function. i mean its not a function of a class. its a seperate fnction. its good when you want to use a validator in many places. makesure to pass `value` to this function.
@@ -32,4 +32,7 @@ class UserRegisterSerializer(serializers.Serializer):
         
         
         
-        
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'

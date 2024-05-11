@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from rest_framework.authtoken import views as auth_token
+from rest_framework import routers
+from .views import UserViewset
 
 app_name='accounts'
 urlpatterns=[
@@ -9,4 +11,7 @@ urlpatterns=[
 
 ]
 
+router = routers.SimpleRouter()
+router.register('users', UserViewset)
+urlpatterns += router.urls
 
