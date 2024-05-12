@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt' , 
 ]
 
 MIDDLEWARE = [
@@ -131,10 +132,13 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
 #restframework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+         'rest_framework_simplejwt.authentication.JWTAuthentication' ,
+    #    'rest_framework.authentication.TokenAuthentication',         //in vase vaghti bod ke az token default khode django estefade mikardim. vali vaghti az jwt estefade mikonim dg niazi nistesh ke az in item estefade beshe
 
     ]
 }
