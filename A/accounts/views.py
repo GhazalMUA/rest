@@ -17,6 +17,7 @@ class UserRegisterView(APIView):
     
     
 class UserViewset(viewsets.ViewSet): 
+    
     permission_classes =[IsAuthenticated]
     queryset = User.objects.all()
     
@@ -41,6 +42,7 @@ class UserViewset(viewsets.ViewSet):
             serialized_data.save()
             return Response (data=serialized_data.data)
         return Response (data=serialized_data.errors)
+
 
     def destroy(self, request, pk=None):
         user=get_object_or_404(self.queryset , pk=pk)

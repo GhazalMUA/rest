@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt' , 
+    'rest_framework_simplejwt',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -137,8 +138,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #restframework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-         'rest_framework_simplejwt.authentication.JWTAuthentication' ,
-    #    'rest_framework.authentication.TokenAuthentication',         //in vase vaghti bod ke az token default khode django estefade mikardim. vali vaghti az jwt estefade mikonim dg niazi nistesh ke az in item estefade beshe
+        'rest_framework_simplejwt.authentication.JWTAuthentication' ,
+    #   'rest_framework.authentication.TokenAuthentication',         //in vase vaghti bod ke az token default khode django estefade mikardim. vali vaghti az jwt estefade mikonim dg niazi nistesh ke az in item estefade beshe
+    ] ,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
 
-    ]
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'my rest project for shop',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
 }

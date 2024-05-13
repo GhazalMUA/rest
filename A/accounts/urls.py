@@ -16,3 +16,7 @@ router = routers.SimpleRouter()
 router.register('users', UserViewset)
 urlpatterns += router.urls
 
+# {
+#     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNTU4Njg4MSwiaWF0IjoxNzE1NTAwNDgxLCJqdGkiOiI4YWUyNzE5ZjgxMmM0YzQ0OWJlN2RhOGQ0OTJlNTFiMSIsInVzZXJfaWQiOjN9.oZ8A9aQtmb0NgxP1G0tZh5_41rWgJcrPjQtGQZ1mgOw",
+#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE1NTAwNzgxLCJpYXQiOjE3MTU1MDA0ODEsImp0aSI6IjQyZjFiNmQxOWQyNjRiMjA4YjdhMDcyZTY5OTU4M2RhIiwidXNlcl9pZCI6M30._3EKzQgzCMgolNe3B-08jj36f0c-cjRzqcbkABHopxU"
+# }
